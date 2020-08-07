@@ -35,9 +35,9 @@
 		"MuxMem":     {"type": "Multiplexer", "latency": 15, "x": 580, "y": 270, "size": 32, "sel": "MemToReg", "in": ["0", "1"], "out": "Out", "desc": {"default": "Selects the result of the ALU or the value read from memory to write to the destination register (WriteData).", "pt": "Selecciona o resultado da ALU ou o valor lido da memória para escrever no registo de destino (WriteData)."}},
 
 		"ForkAltJump": {"type": "Fork", "x": 190, "y": 200, "size": 6, "in": "In", "out": ["Out1", "Out2"]},
-		"MuxAltJump":  {"type": "Multiplexer", "latency": 15, "x": 640, "y": 18, "size": 32, "sel": "AltJump", "in": ["0", "1"], "out": "Out", "desc": {"default": "Selects PC+4 or the branch address as the new PC."}},
-		"AndAltJump":  {"type": "And", "x": 650, "y": 100, "in1": "in0", "in2": "in1", "out": "Out", "desc": {"default": "Opcode Bit 0"}},
-		"ConstAltJump": {"type": "Constant", "x": 635, "y": 100, "out": "Out", "val": 1, "size": 1},
+		"MuxAltJump":  {"type": "Multiplexer", "latency": 15, "x": 640, "y": 18, "size": 32, "sel": "AltJump", "in": ["0", "1"], "out": "Out", "desc": {"default": "Selects PC+4/Branch or the Jump address as the new PC."}},
+		"AndAltJump":  {"type": "And", "x": 650, "y": 100, "in1": "in0", "in2": "in1", "out": "Out", "desc": {"default": "Checks if the Op Code corresponds to a Jump instruction by checking Bit 4"}},
+		"ConstAltJump": {"type": "Constant", "x": 635, "y": 100, "out": "Out", "val": 1, "size": 1, "desc": "A bit in state 1 for checking the Bit 4 in the OP Code"},
 		"DistAltJump":     {"type": "Distributor", "x": 645, "y": 380, "in": {"id": "In", "size": 6}, "out": [{"msb": 4, "lsb": 4}]},
 
 	},

@@ -65,11 +65,11 @@
 
 
 		"ForkAltJump": {"type": "Fork", "x": 210, "y": 215, "size": 6, "in": "In", "out": ["Out1", "Out2"]},
-		"MuxAltJump":  {"type": "Multiplexer", "latency": 15, "x": 40, "y": 320, "size": 32, "sel": "AltJump", "in": ["0", "1"], "out": "Out", "desc": {"default": "Selects PC+4 or the branch address as the new PC."}},
-		"AndAltJump":  {"type": "And", "x": 40, "y": 400, "in1": "in0", "in2": "in1", "out": "Out", "desc": {"default": "Opcode Bit 4"}},
-		"ConstAltJump": {"type": "Constant", "x": 20, "y": 400, "out": "Out", "val": 1, "size": 1},
-		"DistAltJump": {"type": "Distributor", "x": 85, "y": 450, "in": {"id": "In", "size": 6}, "out": [{"msb": 4, "lsb": 4}]},
-		"OrAltJump":  {"type": "Or", "x": 620, "y": 50, "in1": "in0", "in2": "in1", "out": "Out", "desc": {"default": "Opcode Bit 4"}},
+		"MuxAltJump":  {"type": "Multiplexer", "latency": 15, "x": 40, "y": 320, "size": 32, "sel": "AltJump", "in": ["0", "1"], "out": "Out", "desc": {"default": "Selects PC+4/Branch or the Jump address as the new PC."}},
+		"AndAltJump":  {"type": "And", "x": 40, "y": 400, "in1": "in0", "in2": "in1", "out": "Out", "desc": {"default": "Checks if the Op Code corresponds to a Jump instruction by checking Bit 4"}},
+		"ConstAltJump": {"type": "Constant", "x": 20, "y": 400, "out": "Out", "val": 1, "size": 1, "desc": "A bit in state 1 for checking the Bit 4 in the OP Code"},
+		"DistAltJump": {"type": "Distributor", "x": 85, "y": 450, "in": {"id": "In", "size": 6}, "out": [{"msb": 4, "lsb": 4}], "desc": "Distributes Bit 4 of the OpCode to check for a Jump instruction"},
+		"OrAltJump":  {"type": "Or", "x": 620, "y": 50, "in1": "in0", "in2": "in1", "out": "Out", "desc": {"default": "Checks if the instruction was a Jump or a Branch, in either case it flushes the Pipelines"}},
 		"ForkAltJumpBit": {"type": "Fork", "x": 610, "y": 160, "size": 1, "in": "In", "out": ["Out1", "Out2"]},
 
 
